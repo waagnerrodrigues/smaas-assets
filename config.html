@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://res.cdn.office.net/teams-js/2.0.0/js/MicrosoftTeams.min.js"></script>
+</head>
+<body style="background:#1f1f1f;color:white;font-family:Segoe UI;text-align:center;padding-top:50px;">
+
+<h2>Checklist MDR</h2>
+<p>Clique abaixo para adicionar</p>
+
+<button onclick="save()" style="
+padding:12px 24px;
+border:none;
+border-radius:8px;
+background:#6264A7;
+color:white;
+font-size:16px;
+cursor:pointer;">
+Adicionar
+</button>
+
+<script>
+microsoftTeams.app.initialize();
+
+function save() {
+  microsoftTeams.pages.config.setConfig({
+    entityId: "checklist-mdr",
+    suggestedDisplayName: "Checklist MDR",
+    contentUrl: "https://waagnerrodrigues.github.io/smaas-assets/checklist.html",
+    websiteUrl: "https://waagnerrodrigues.github.io/smaas-assets/checklist.html"
+  });
+
+  microsoftTeams.pages.config.setValidityState(true);
+  microsoftTeams.pages.config.registerOnSaveHandler((saveEvent) => {
+    saveEvent.notifySuccess();
+  });
+}
+</script>
+
+</body>
+</html>
