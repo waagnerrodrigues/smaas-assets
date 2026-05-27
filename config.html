@@ -1,40 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <script src="https://res.cdn.office.net/teams-js/2.0.0/js/MicrosoftTeams.min.js"></script>
 </head>
-<body style="background:#1f1f1f;color:white;font-family:Segoe UI;text-align:center;padding-top:50px;">
 
-<h2>Checklist MDR</h2>
-<p>Clique abaixo para adicionar</p>
-
-<button onclick="save()" style="
-padding:12px 24px;
-border:none;
-border-radius:8px;
-background:#6264A7;
+<body style="
+background:#1f1f1f;
 color:white;
-font-size:16px;
-cursor:pointer;">
-Adicionar
-</button>
+font-family:Segoe UI;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+">
+
+<div style="text-align:center;">
+  <h1>Checklist MDR</h1>
+  <p>Clique abaixo para adicionar a guia</p>
+
+  <button id="saveBtn" style="
+    padding:12px 24px;
+    border:none;
+    border-radius:8px;
+    background:#6264A7;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+  ">
+    Adicionar
+  </button>
+</div>
 
 <script>
-microsoftTeams.app.initialize();
-
-function save() {
-  microsoftTeams.pages.config.setConfig({
-    entityId: "checklist-mdr",
-    suggestedDisplayName: "Checklist MDR",
-    contentUrl: "https://waagnerrodrigues.github.io/smaas-assets/checklist.html",
-    websiteUrl: "https://waagnerrodrigues.github.io/smaas-assets/checklist.html"
-  });
+(async () => {
+  await microsoftTeams.app.initialize();
 
   microsoftTeams.pages.config.setValidityState(true);
+
+  document.getElementById("saveBtn").onclick = () => {
+    microsoftTeams.pages.config.setConfig({
+      entityId: "checklist-mdr",
+      suggestedDisplayName: "Checklist MDR",
+      contentUrl: "https://waagnerrodrigues.github.io/smaas-assets/checklist.html",
+      websiteUrl: "https://waagnerrodrigues.github.io/smaas-assets/checklist.html"
+    });
+  };
+
   microsoftTeams.pages.config.registerOnSaveHandler((saveEvent) => {
     saveEvent.notifySuccess();
   });
-}
+})();
 </script>
 
 </body>
